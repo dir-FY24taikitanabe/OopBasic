@@ -1,23 +1,41 @@
 package company;
-
+//オブジェクトの設定を行う
 public class ObjectSample {
 
     public static void main(String[] args) {
 
-        var department = new Department("eigyou", "xx", 1000000);
-        var employee = new Employee("suzuki", department, "kachou", 100);
+        var salesDepartment = new Department("eigyou", "xx", 1000000);
+        Employee sales = new Sales("suzuki", salesDepartment, "kachou", 100);
                 
-        employee.report();
-        employee.report(2);
-        employee.joinMeeting();
+        sales.report();
+        sales.report(2);
+        sales.joinMeeting();
         
         System.out.println("");
         
         var devDepartment = new Department("kaihatu", "yy", 0);
-        var engineer = new Employee("tanaka", devDepartment, "ipann shainn", 88);
+        var engineer = new Engineer("tanaka", devDepartment, "一般社員", 88,"java");
                 
         engineer.report();
         engineer.joinMeeting();
+        engineer.developsoftware();
+        
+        Employee projectManager = new Engineer("佐藤", devDepartment , "PM", 99, "java");
+        projectManager.report();
+        projectManager.joinMeeting();
+        if (projectManager instanceof Engineer) {//developsoftwareメゾットを呼び出す
+            
+            ((Engineer)projectManager).developsoftware();
+            
+        }
+        
+        System.out.println("");
+        var parttimeWorker = new parttimeWorker("田邊", salesDepartment);
+                
+                ((Workable)sales).work();
+                ((Workable)engineer).work();
+                ((Workable)projectManager).work();
+                ((Workable)parttimeWorker).work();
                 
     }
 

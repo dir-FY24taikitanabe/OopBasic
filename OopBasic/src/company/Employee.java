@@ -1,13 +1,12 @@
 package company;
 
-public class Employee {
+public abstract class Employee implements Workable {
 
     //フィールド
     protected final String name;
-    private final Department department;
+    protected final Department department;
     private final String position;
-    
-    private final int employeeId;
+    protected int employeeId;
     //コンストラクター
     public Employee(String name, Department department, String position, int employeeId )
     {
@@ -29,11 +28,12 @@ public class Employee {
             report(1);
             
         }
-    
-        public void joinMeeting() {
-            department.meeting();
-            System.out.println("→上記の会議に出席。部署：" + department.getname()+ "名前" + name);
-            
+    //kaigi
+        public abstract void joinMeeting();
+      
+        //hatarakuyo
+        @Override
+        public void work() {
+            System.out.println("正社員として働くよ。名前："+name +slogan);
         }
-
 }
